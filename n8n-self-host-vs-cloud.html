@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8n self-hosted vs n8n Cloud for a 5-person team (2026 cost breakdown)</title>
+<meta name="description" content="€50/month for n8n Cloud Pro or €5.49–12 for a server — plus the hours nobody puts in the spreadsheet. A break-even table, the licence line agencies must not cross, and the plan limits that actually decide it.">
+<link rel="canonical" href="https://whdgus1021-png.github.io/opsstack-guide/n8n-self-host-vs-cloud.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="n8n self-hosted vs Cloud for a 5-person team">
+<meta property="og:description" content="The server is the cheap part. Here is the real break-even, and the encryption key that ends your automation project if you lose it.">
+<meta property="og:url" content="https://whdgus1021-png.github.io/opsstack-guide/n8n-self-host-vs-cloud.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2314181d'/><text x='50' y='70' font-size='58' font-family='Georgia,serif' fill='%23fbf9f4' text-anchor='middle'>O</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://whdgus1021-png.github.io/opsstack-guide/n8n-self-host-vs-cloud.html#article",
+      "headline": "n8n self-hosted vs n8n Cloud for a 5-person team",
+      "description": "A cost breakdown of self-hosted n8n against Cloud Starter and Pro, including maintenance hours, licensing limits and execution caps.",
+      "datePublished": "2026-11-22",
+      "dateModified": "2026-11-22",
+      "author": { "@type": "Organization", "name": "OpsStack Guide" },
+      "publisher": { "@type": "Organization", "name": "OpsStack Guide" },
+      "mainEntityOfPage": "https://whdgus1021-png.github.io/opsstack-guide/n8n-self-host-vs-cloud.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can an agency host n8n for its clients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under the Sustainable Use License, self-hosted n8n is licensed for your own internal business purposes. Running it as a service you sell or host on behalf of clients is outside that grant and needs a commercial agreement with n8n. Hosting your own agency's workflows is internal use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much server does n8n need for five people?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 2 GB RAM instance is the usual starting point for a small team in default mode: $12/month at DigitalOcean, or a Hetzner shared-vCPU server from €5.49/month excluding VAT. Move to 4 GB when you start paging through large spreadsheets or running many concurrent executions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I lose the n8n encryption key?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Credentials stored in n8n are encrypted with the instance key. If that key is not backed up and the instance is rebuilt without it, the stored credentials cannot be decrypted and every connection has to be authorised again. Back up the key alongside the database, not inside the same snapshot."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">OpsStack<span>Guide</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#method">How we check</a>
+      <a href="about.html">About</a>
+      <a href="affiliate-disclosure.html">Disclosure</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Cost breakdown · n8n</p>
+      <h1>n8n self-hosted vs n8n Cloud for a five-person team</h1>
+      <p class="dek">The server costs €5.49. The maintenance is what you are actually choosing between — so let us price it honestly, then look at the one licence line an agency must not cross.</p>
+      <div class="article-meta">
+        <span class="pill check">Prices checked 22 Nov 2026</span>
+        <span>10 min read</span>
+        <span>n8n · hosting</span>
+      </div>
+      <p class="disclosure">Contains affiliate links. We may earn a commission if you subscribe through them, at no extra cost to you. <a href="affiliate-disclosure.html">How we handle this</a>.</p>
+    </div>
+  </div>
+
+  <div class="wrap layout">
+    <article>
+
+      <div class="verdict">
+        <h3 style="margin-top:0">Short answer</h3>
+        <p>For five people, <strong>Cloud Pro at €50/month (yearly) is the cheaper option unless someone on the team genuinely enjoys server upkeep</strong> — and Starter at €20 is cheaper still if none of your workflows takes longer than five minutes to run.</p>
+        <p>Self-host if you need something Cloud will not give you: custom nodes, bash and Python steps, credentials that must not leave your infrastructure, or more concurrency than Starter's five executions without paying €667 for Business.</p>
+        <p>Do not self-host to save money you have not counted in hours. Below, that comes out to roughly 1.5 hours a month before self-hosting loses to Pro.</p>
+      </div>
+
+      <h2 id="numbers">The two numbers people compare</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>n8n Cloud (yearly billing) against a self-hosted server</caption>
+          <thead>
+            <tr><th>Item</th><th class="num">Monthly</th><th class="num">Yearly</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>n8n Cloud Starter</td><td class="num">€20</td><td class="num">€240</td><td>5 concurrent executions, 5-minute max run, 7-day logs, 2.5k saved executions, 1 project</td></tr>
+            <tr><td>n8n Cloud Pro</td><td class="num">€50</td><td class="num">€600</td><td>20–50 concurrent executions, 40-minute max run, 30-day logs, 25k saved executions, 3 projects, admin roles, insights</td></tr>
+            <tr><td>Hetzner shared-vCPU server</td><td class="num">from €5.49</td><td class="num">from €66</td><td>Excluding VAT; the cheapest tier is enough for light workloads</td></tr>
+            <tr><td>DigitalOcean 2 GB / 1 vCPU</td><td class="num">$12</td><td class="num">$144</td><td>50 GB SSD, 2 TB transfer — the common default for a small self-hosted instance</td></tr>
+            <tr><td>DigitalOcean 4 GB / 2 vCPU</td><td class="num">$24</td><td class="num">$288</td><td>What you move to when workflows page through big sheets or run many executions at once</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Sources: n8n.io/pricing and digitalocean.com/pricing/droplets, hetzner.com/cloud, all read 22 November 2026. EUR prices are n8n's; cloud hosting is billed in USD at DigitalOcean and EUR at Hetzner.</p>
+      <p>On paper it looks absurd: €600 a year against €66. This is the calculation that convinces people to self-host, and it is missing exactly one line — the hours — plus a set of limits that decide whether the cheap Cloud plan is even usable.</p>
+
+      <h2 id="hours">Pricing the hours nobody invoices</h2>
+      <p>A self-hosted n8n instance is a small production system. In a normal month it needs: Docker image and n8n version updates (they ship frequently), a database backup you have actually restored once, a certificate that renews itself, disk and memory checks, and an hour of attention when something breaks at the worst moment. For a five-person team that is realistically <strong>1.5–3 hours a month</strong>, spiking on the month something goes wrong.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Real monthly cost of self-hosting, by what an hour of your time is worth</caption>
+          <thead>
+            <tr><th>Internal hourly rate</th><th class="num">1 h/month</th><th class="num">2 h/month</th><th class="num">3 h/month</th><th>Compare to</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>€40</td><td class="num">€51</td><td class="num">€91</td><td class="num">€131</td><td>Cloud Pro at €50</td></tr>
+            <tr><td>€60</td><td class="num">€71</td><td class="num">€131</td><td class="num">€191</td><td>Cloud Pro at €50</td></tr>
+            <tr><td>€90</td><td class="num">€101</td><td class="num">€191</td><td class="num">€281</td><td>Cloud Pro at €50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Includes €11/month for the server (roughly €5.49 Hetzner + IPv4 and backup headroom, or a $12 droplet). Excludes the one-off cost of setting it up, which is a day for someone competent and two for someone learning.</p>
+      <p>At €40 an hour, one hour of maintenance a month already makes self-hosting more expensive than Cloud Pro. That is the honest break-even: <strong>self-hosting wins only if you are below roughly 1.5 hours a month, or if you would not otherwise be billing those hours</strong> — a founder on a Sunday, a technical co-owner, a quiet week.</p>
+      <p>There is a second, subtler cost: risk concentration. A Cloud outage is an outage someone else is fixing, and it is on their status page. A self-hosted outage at 6pm on invoice day is yours, including the client conversation.</p>
+
+      <h2 id="limits">The limits that decide this before price does</h2>
+      <h3>Five-minute runs (Starter)</h3>
+      <p>Cloud Starter caps a single execution at five minutes; Pro allows 40. Self-hosted has no cap beyond your own configuration. Any workflow that pages through a few thousand spreadsheet rows, generates a large PDF, or waits for a human approval will hit Starter's cap and fail mid-run. If that is your workload, Starter is not a cheaper Pro — it is a different product.</p>
+      <h3>Five concurrent executions (Starter)</h3>
+      <p>Concurrency is how many runs can be in flight at once. Five is fine for scheduled jobs and webhooks arriving one at a time. It is not fine if 40 client forms land in the same minute, or if an AI workflow sits waiting on a model response while others queue. Pro raises it to 20–50; self-hosted goes as far as your server, plus workers in queue mode.</p>
+      <h3>Projects (1 on Starter, 3 on Pro)</h3>
+      <p>Projects are the closest thing n8n has to per-client separation: credentials, workflows and members are scoped to a project. One project on Starter means the whole agency shares one workspace. Three on Pro maps to "internal", "client A", "client B" — enough for a small studio, not enough for twelve retainers. Business (€667/month) raises it to six, which is the point where most agencies stop and ask whether they need separate instances instead.</p>
+      <h3>Logs and saved executions</h3>
+      <p>Seven days of execution history on Starter vs 30 on Pro. When a client says "the report was wrong last month", seven days is not enough to reconstruct what happened. Self-hosted keeps whatever you configure, but you are the one storing and pruning it.</p>
+
+      <h2 id="licence">The licence line agencies must not cross</h2>
+      <div class="callout warn">
+        <span class="label">Read this before you host for a client</span>
+        <p>Self-hosted n8n ships under the <strong>Sustainable Use License</strong>, which grants use for your own internal business purposes. <strong>Running n8n as a service for other businesses — hosting a client's workflows on your instance, or reselling it as part of a managed service — is outside that grant</strong> and requires a commercial agreement with n8n. Hosting your own agency's automations is internal use; hosting your client's automations on the same box is where the line sits.</p>
+      </div>
+      <p>This matters more than it looks, because "we'll put each client in their own project" is the natural agency plan. If the client owns and operates the workflows, the cleanest structure is a Cloud account in the client's name with you as an invited user — they pay €20–50, you do the work, and nobody is running a hosting service on a licence that does not cover it. Confirm the current terms on n8n's licence page before you build a commercial arrangement on top of your reading of them.</p>
+
+      <h2 id="keys">If you do self-host, get these right</h2>
+      <ul>
+        <li><strong>Back up the encryption key with the database.</strong> Credentials are encrypted with the instance key. Rebuild without it and every connection has to be re-authorised — the data is not gone, but your whole integration layer is.</li>
+        <li><strong>Use Postgres, not the default SQLite,</strong> once more than one person depends on it. SQLite is fine for a test instance and becomes a liability with backup and concurrency.</li>
+        <li><strong>Pin the image tag</strong> (a specific version rather than <code>latest</code>) and update deliberately, on a day you can watch it. Automatic upgrades on a production workflow engine are how Monday mornings get ruined.</li>
+        <li><strong>Enable the provider's snapshot backup</strong> and then actually restore one. A backup you have never restored is a hope.</li>
+        <li><strong>Put it behind TLS</strong> and do not expose the editor to the open internet without at least basic authentication and a firewall rule.</li>
+      </ul>
+
+      <h2 id="breakdown">What we would pick</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>Decision table for a five-person team, November 2026 prices</caption>
+          <thead>
+            <tr><th>Your situation</th><th>Pick</th><th class="num">Cost</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Workflows are short, volume is modest, nobody wants to touch a server</td><td>Cloud Starter</td><td class="num">€20/mo</td><td>Cheapest hosted option; the 5-minute cap will not bite simple syncs and alerts</td></tr>
+            <tr><td>Any workflow runs longer than five minutes, or you need 30-day logs</td><td>Cloud Pro</td><td class="num">€50/mo</td><td>40-minute runs, 20–50 concurrent, three projects, admin roles</td></tr>
+            <tr><td>Someone on the team already runs servers and enjoys it</td><td>Self-hosted</td><td class="num">$12–24/mo</td><td>Custom nodes, bash, Python, full control of where credentials live</td></tr>
+            <tr><td>Client work, where the client owns the automation</td><td>Cloud in the client's account</td><td class="num">€20–50/mo, billed to client</td><td>Keeps you inside the licence and gives them an asset they control</td></tr>
+            <tr><td>You need 6+ isolated client workspaces</td><td>Separate instances, not one plan</td><td class="num">€20+ each</td><td>One shared instance with folders is not isolation, whatever the labels say</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout good">
+        <span class="label">The sequence that works</span>
+        <p>Start on Cloud Starter for a month with two real client workflows. You will learn whether your slowest workflow fits in five minutes and how often you hit concurrency before you have paid for a server or committed to maintenance. Move to Pro, or to a self-hosted instance, with evidence in hand instead of a spreadsheet guess.</p>
+      </div>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Can an agency host n8n for its clients?</h3>
+      <p>Under the Sustainable Use License, self-hosted n8n is licensed for your own internal business purposes. Hosting it as a service you sell, or running client-owned automations on your instance, is outside that grant and needs a commercial agreement with n8n.</p>
+      <h3>How much server does five people need?</h3>
+      <p>A 2 GB instance is the usual starting point — $12/month at DigitalOcean, or a Hetzner shared-vCPU server from €5.49/month excluding VAT. Move to 4 GB ($24) when you start paging through large sheets or running many executions at once.</p>
+      <h3>What happens if I lose the encryption key?</h3>
+      <p>Stored credentials cannot be decrypted. Nothing else is lost, but every integration has to be authorised again. Back the key up separately from the server snapshot, in a password manager or secrets store.</p>
+      <h3>Is self-hosting really free?</h3>
+      <p>The licence is free for internal use; the server is not. Realistically €66–288 a year for hosting, plus 1.5–3 hours a month of attention. Price the hours at what they would otherwise earn and the "free" usually becomes €50–130 a month.</p>
+
+      <div class="cta-row">
+        <a class="cta" href="https://n8n.io/" rel="sponsored nofollow noopener" data-aff="n8n">Start on n8n Cloud <span class="tag">· no card for Starter</span></a>
+        <a class="cta" href="https://github.com/n8n-io/n8n" rel="noopener">Self-host from GitHub <span class="tag">· Community Edition</span></a>
+      </div>
+
+      <p class="tnote" style="margin-top:2.5em">Prices from n8n.io/pricing (yearly billing), digitalocean.com/pricing/droplets and hetzner.com/cloud, read 22 November 2026. Licence terms as published by n8n; read the current licence text before relying on it for a commercial arrangement.</p>
+
+    </article>
+
+    <aside class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#numbers">The two numbers</a></li>
+        <li><a href="#hours">Pricing the hours</a></li>
+        <li><a href="#limits">Limits that decide</a></li>
+        <li><a href="#licence">The licence line</a></li>
+        <li><a href="#keys">Hosting checklist</a></li>
+        <li><a href="#breakdown">What we'd pick</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="./">OpsStack<span>Guide</span></a>
+        <p style="max-width:340px;margin-top:12px">Independent comparisons of the automation and CRM tools small agencies run. Prices verified against vendor pages, dated in every article.</p>
+      </div>
+      <div>
+        <h2>Reviews</h2>
+        <ul>
+          <li><a href="make-vs-zapier-vs-n8n.html">Make vs Zapier vs n8n</a></li>
+          <li><a href="zapier-alternatives-task-limits.html">Zapier alternatives</a></li>
+          <li><a href="n8n-self-host-vs-cloud.html">n8n self-host vs cloud</a></li>
+          <li><a href="hubspot-starter-vs-free-crm.html">HubSpot Starter vs free</a></li>
+          <li><a href="client-reporting-automation.html">Client reporting guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="about.html">About &amp; editorial policy</a></li>
+          <li><a href="affiliate-disclosure.html">Affiliate disclosure</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://github.com/whdgus1021-png/opsstack-guide/issues">Report a price change</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© 2026 OpsStack Guide. No cookies, no analytics, no tracking scripts. Prices in USD unless noted, checked 22 November 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

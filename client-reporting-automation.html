@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automate the monthly client report: Sheets + Looker Studio + Make (2026 guide)</title>
+<meta name="description" content="A copyable build for agencies: one data sheet, one dashboard template, one scheduled workflow. Costs $9/month for eight clients, takes a day to set up, and avoids the caching trap that shows clients last week's numbers.">
+<link rel="canonical" href="https://whdgus1021-png.github.io/opsstack-guide/client-reporting-automation.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Automate the monthly client report: Sheets + Looker Studio + Make">
+<meta property="og:description" content="One schema, one dashboard, one scheduled workflow — and the free-tier caching trap that makes clients think the numbers are wrong.">
+<meta property="og:url" content="https://whdgus1021-png.github.io/opsstack-guide/client-reporting-automation.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2314181d'/><text x='50' y='70' font-size='58' font-family='Georgia,serif' fill='%23fbf9f4' text-anchor='middle'>O</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://whdgus1021-png.github.io/opsstack-guide/client-reporting-automation.html#article",
+      "headline": "Automate the monthly client report with Sheets, Looker Studio and Make",
+      "description": "A step-by-step build for a repeatable client reporting stack, with cost per client and the caching behaviour to design around.",
+      "datePublished": "2026-11-22",
+      "dateModified": "2026-11-22",
+      "author": { "@type": "Organization", "name": "OpsStack Guide" },
+      "publisher": { "@type": "Organization", "name": "OpsStack Guide" },
+      "mainEntityOfPage": "https://whdgus1021-png.github.io/opsstack-guide/client-reporting-automation.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does an automated client reporting stack cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google Sheets and Looker Studio are free; the only subscription is Make Core at $9/month with annual billing for 10,000 credits. A month-end report workflow for eight clients consumes a few hundred credits, so the stack runs at about $9/month in total, roughly $1.13 per client."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my Looker Studio report show old numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Looker Studio caches the data behind a report rather than reading the source sheet on every page load. Google Sheets data sources use a freshness setting measured in hours, so a number you changed ten minutes ago may not appear yet. Set data freshness explicitly on the data source, and use the Extract Data connector only for snapshots you intend to freeze."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">OpsStack<span>Guide</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#method">How we check</a>
+      <a href="about.html">About</a>
+      <a href="affiliate-disclosure.html">Disclosure</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Guide · Reporting</p>
+      <h1>Automate the monthly client report</h1>
+      <p class="dek">Sheets, Looker Studio and one scheduled workflow. A day of setup, then about fifteen minutes per client per month — and a fixed, boring schema that survives staff changes.</p>
+      <div class="article-meta">
+        <span class="pill check">Prices checked 22 Nov 2026</span>
+        <span>12 min read</span>
+        <span>Sheets · Looker Studio · Make</span>
+      </div>
+      <p class="disclosure">Contains affiliate links. We may earn a commission if you subscribe through them, at no extra cost to you. <a href="affiliate-disclosure.html">How we handle this</a>.</p>
+    </div>
+  </div>
+
+  <div class="wrap layout">
+    <article>
+
+      <div class="verdict">
+        <h3 style="margin-top:0">Why this build, not a dashboard tool</h3>
+        <p>The paid reporting tools are good and start around the price of a small retainer. What most agencies actually need is one repeatable view that answers the client's six questions and arrives on the same day each month. That is a Google Sheet, a Looker Studio report, and a scheduled workflow that pokes both.</p>
+        <p><strong>Total cost: $9/month</strong> (Make Core, annual billing) for any number of clients you can fit in 10,000 credits — roughly $1.13 a client at eight. Everything else is free.</p>
+        <p><strong>Real cost: a day of setup</strong>, and the discipline to keep one column schema for every client instead of a bespoke sheet per account.</p>
+      </div>
+
+      <h2 id="cost">What it costs to run, per client</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>Monthly cost of the stack at 8 and 20 clients</caption>
+          <thead>
+            <tr><th>Part</th><th class="num">Monthly</th><th>Notes at 8 clients</th><th>Notes at 20 clients</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Google Sheets</td><td class="num">$0</td><td>One master sheet, a tab per client, or one flat data tab</td><td>Same; file size stops being an issue before Sheets does</td></tr>
+            <tr><td>Looker Studio</td><td class="num">$0</td><td>One report template, copied or filtered per client</td><td>20 report copies; still free, more to keep in sync</td></tr>
+            <tr><td>Make Core</td><td class="num">$9</td><td>Month-end run: read rows, write summary, email the link</td><td>Roughly 500–800 credits/month across 20 clients</td></tr>
+            <tr><td><strong>Total</strong></td><td class="num"><strong>$9</strong></td><td class="num"><strong>≈ $1.13/client</strong></td><td class="num"><strong>≈ $0.45/client</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Make Core: $9/month with annual billing for 10,000 credits, $0.90 per additional 1,000. A month-end workflow that runs once per client per month — a handful of modules, maybe 30–60 credits each — leaves most of the allowance unused. The credits become the constraint only if you also run per-row syncs.</p>
+      <p>The honest comparison is not with a $50 reporting tool; it is with the three hours a designer spends rebuilding the same deck every month. At eight clients that is 24 hours, which is half a working week, every month, for a document nobody reads closely.</p>
+
+      <h2 id="schema">Step 1: fix the schema before you touch a chart</h2>
+      <p>The reason most reporting builds collapse is that every client gets a slightly different sheet, so every month is a small bespoke job. Pick one row shape and refuse to change it per client. Ours looks like this:</p>
+      <div class="table-scroll">
+        <table>
+          <caption>One row = one client, one month, one channel</caption>
+          <thead>
+            <tr><th>Column</th><th>Type</th><th>Why it exists</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>client</code></td><td>text</td><td>Exact match with the report's filter — case and spacing matter</td></tr>
+            <tr><td><code>month</code></td><td>YYYY-MM</td><td>Sortable, aggregatable, no locale ambiguity</td></tr>
+            <tr><td><code>channel</code></td><td>text</td><td>SEO / Ads / Referral / Email — the dimension most clients ask about</td></tr>
+            <tr><td><code>sessions</code></td><td>number</td><td>Volume</td></tr>
+            <tr><td><code>leads</code></td><td>number</td><td>Conversion volume</td></tr>
+            <tr><td><code>deals_won</code></td><td>number</td><td>The number the client's finance person checks</td></tr>
+            <tr><td><code>revenue</code></td><td>number</td><td>Attributed revenue, no currency symbols</td></tr>
+            <tr><td><code>hours_spent</code></td><td>number</td><td>Yours; feeds the internal profitability view</td></tr>
+            <tr><td><code>retainer</code></td><td>number</td><td>Yours; monthly fee, constant per client</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A starter file with sample rows is <a href="assets/client-report-template.csv" download>here (CSV)</a> — import it into a fresh sheet and replace the rows.</p>
+      <p>Two rules that save months of pain later: <strong>no formulas in the raw tab</strong> (formulas belong in a separate tab, or the data source starts returning errors when rows are appended), and <strong>no merged cells, ever</strong> — Looker Studio treats a merged header as a data type it cannot guess, and you will spend an hour on it.</p>
+
+      <h2 id="sheet">Step 2: one sheet, or a tab per client?</h2>
+      <p>Both work; they fail differently.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Structure choice</caption>
+          <thead>
+            <tr><th>Structure</th><th>Good for</th><th>Breaks when</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Flat data tab</strong> (all clients, all months, one table)</td><td>Up to ~30 clients; one report with a client filter; any aggregation across clients</td><td>Someone deletes a row and the report silently loses a month</td></tr>
+            <tr><td><strong>Tab per client</strong></td><td>Clients with genuinely different metrics; strict access separation</td><td>You have 20 tabs to update by hand, and Looker Studio needs 20 data sources</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>We default to the flat tab. One data source in Looker Studio, one filter dimension, and a month-end append that touches one row per client per channel. Access separation, if a client insists on it, is a separate file with an <code>IMPORTRANGE</code> — not a separate schema.</p>
+
+      <h2 id="looker">Step 3: build one report, copy it</h2>
+      <p>Connect Looker Studio to the sheet once. Then build a single page that answers six things and stop:</p>
+      <ol>
+        <li><strong>Month vs previous month</strong> on sessions, leads, and revenue — three scorecards, with the change shown as a number, not a colour.</li>
+        <li><strong>Channel table</strong> with sessions, leads, deals and revenue, sorted by revenue.</li>
+        <li><strong>Lead-to-deal rate</strong> by month, as a line chart. This is the number clients argue about, and it is the one most reports omit.</li>
+        <li><strong>Cost per lead</strong> if you have spend in the sheet; otherwise hours against retainer.</li>
+        <li><strong>Twelve-month trend</strong> for context, because one month is noise.</li>
+        <li><strong>A one-line note field</strong> from the sheet: what changed, what is next. Nobody reads a dashboard that does not explain itself.</li>
+      </ol>
+      <p>Then add a <strong>client filter</strong> (a drop-down on the <code>client</code> dimension) and either share one report with the filter preset per client, or copy the report per client and set its filter as default. Copies are safer for client-facing links: a filter is a URL parameter, and a URL parameter gets forwarded to the wrong person eventually.</p>
+
+      <div class="callout warn">
+        <span class="label">The caching trap</span>
+        <p>Looker Studio does not read your sheet every time someone opens the report. A Sheets data source has a freshness setting measured in hours, and the default is long enough that a number you corrected this morning may not show this afternoon. Set <strong>data freshness explicitly</strong> on the data source, and remember that the Extract Data connector is the opposite tool: it freezes a snapshot, which is right for a closed month and wrong for a live dashboard. If a client says "these numbers are from last week", this setting is the answer nine times out of ten.</p>
+      </div>
+
+      <h2 id="make">Step 4: the month-end workflow</h2>
+      <p>The Make scenario does four small things and stops. Keep it that small; the temptation to make it clever is what turns a reporting pipeline into a maintenance item.</p>
+      <ol>
+        <li><strong>Trigger:</strong> schedule, first business day of the month, 07:00 in your timezone.</li>
+        <li><strong>Read:</strong> the client list from a small config tab (name, report URL, contact email, retainer).</li>
+        <li><strong>Write:</strong> for each client, append a summary row to the archive tab — month, totals, and a <code>status: sent</code> flag. This is your audit trail when a client says the report never arrived.</li>
+        <li><strong>Send:</strong> one email per client with the report link and a two-line summary written from the numbers, not the dashboard.</li>
+      </ol>
+      <p>That is about 25–60 credits per client per month on Make's counting. Eight clients is a few hundred credits against a 10,000-credit plan, which is why the whole stack fits in $9.</p>
+      <p>Two guardrails worth building on day one: an <strong>error handler</strong> that emails you (not the client) if a step fails, and a <strong>dry-run toggle</strong> in the config tab so you can test the month-end run without emailing eight people.</p>
+
+      <h2 id="effort">What it actually takes, month to month</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>Effort before and after</caption>
+          <thead>
+            <tr><th>Task</th><th>Before</th><th>After</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Collect numbers per client</td><td>30–45 min each</td><td>10 min each (the only irreducible part: a human has to trust the number)</td></tr>
+            <tr><td>Build the deck</td><td>60–90 min each</td><td>0 — the report is a link that already exists</td></tr>
+            <tr><td>Write the commentary</td><td>15 min each</td><td>10 min each; this is the part clients actually read</td></tr>
+            <tr><td>Send and chase</td><td>10 min each</td><td>0 — scheduled, with an audit row</td></tr>
+            <tr><td><strong>Per client, per month</strong></td><td><strong>≈ 2–2.5 h</strong></td><td><strong>≈ 20 min</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>At eight clients that is the difference between about 18 hours and about 3 hours a month. The saving is real, but notice which part did not disappear: the ten minutes where someone decides whether the number is believable. Automating that away is how agencies send reports with a tracking gap in them and spend the next call apologising.</p>
+
+      <h2 id="when">When to stop building and buy</h2>
+      <p>This build has a ceiling, and it is roughly <strong>20 clients or three stakeholders per client</strong>. Past that you want white-labelled domains, per-client logins, scheduled PDFs with your logo, and a way to let a client's marketing manager log in without seeing anyone else's numbers. Those are paid features in dedicated reporting tools, and at that point the subscription is cheaper than the maintenance.</p>
+      <p>It also stops being the right answer if a client contract requires row-level security or an audit log of who viewed what. Google Sheets sharing is not that, and no amount of dashboard polish changes it.</p>
+
+      <div class="cta-row">
+        <a class="cta" href="https://www.make.com/en/register" rel="sponsored nofollow noopener" data-aff="make">Build it on Make free <span class="tag">· 1,000 credits</span></a>
+        <a class="cta" href="assets/client-report-template.csv" download>Download the sheet template <span class="tag">· CSV</span></a>
+      </div>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>How much does this stack cost?</h3>
+      <p>$9/month in total: Make Core at $9 (annual billing, 10,000 credits). Sheets and Looker Studio are free. At eight clients that is about $1.13 per client per month.</p>
+      <h3>Why does the report show old numbers?</h3>
+      <p>Caching. A Looker Studio Sheets data source refreshes on a freshness setting measured in hours rather than on every page load. Set it explicitly, and do not use the Extract Data connector for anything that should stay live.</p>
+      <h3>Can clients log in and see only their own data?</h3>
+      <p>Not reliably with a shared report and a filter — treat that as convenience, not security. For real separation, give each client its own report copy on its own data source, or move to a tool built for multi-tenant reporting.</p>
+      <h3>Do I need Google Workspace?</h3>
+      <p>No. A free Google account can own the sheet and the report. Workspace adds organisational sharing controls, which matter when staff leave — a shared Drive owned by a personal account is how agencies lose their reporting history.</p>
+
+      <p class="tnote" style="margin-top:2.5em">Make pricing from make.com/pricing, annual billing, read 22 November 2026. Looker Studio and Google Sheets are free products; their data-freshness behaviour is Google's documented connector setting. Build steps are our own and were assembled from running this stack, not copied from vendor documentation.</p>
+
+    </article>
+
+    <aside class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#cost">Cost per client</a></li>
+        <li><a href="#schema">1. Fix the schema</a></li>
+        <li><a href="#sheet">2. One sheet or many</a></li>
+        <li><a href="#looker">3. One report, copied</a></li>
+        <li><a href="#make">4. Month-end workflow</a></li>
+        <li><a href="#effort">Effort before/after</a></li>
+        <li><a href="#when">When to buy instead</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="./">OpsStack<span>Guide</span></a>
+        <p style="max-width:340px;margin-top:12px">Independent comparisons of the automation and CRM tools small agencies run. Prices verified against vendor pages, dated in every article.</p>
+      </div>
+      <div>
+        <h2>Reviews</h2>
+        <ul>
+          <li><a href="make-vs-zapier-vs-n8n.html">Make vs Zapier vs n8n</a></li>
+          <li><a href="zapier-alternatives-task-limits.html">Zapier alternatives</a></li>
+          <li><a href="n8n-self-host-vs-cloud.html">n8n self-host vs cloud</a></li>
+          <li><a href="hubspot-starter-vs-free-crm.html">HubSpot Starter vs free</a></li>
+          <li><a href="client-reporting-automation.html">Client reporting guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="about.html">About &amp; editorial policy</a></li>
+          <li><a href="affiliate-disclosure.html">Affiliate disclosure</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://github.com/whdgus1021-png/opsstack-guide/issues">Report a price change</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© 2026 OpsStack Guide. No cookies, no analytics, no tracking scripts. Prices in USD unless noted, checked 22 November 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

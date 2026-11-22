@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make vs Zapier vs n8n for a small agency (2026 price &amp; limit comparison)</title>
+<meta name="description" content="Make charges credits, Zapier charges tasks, n8n charges executions. We priced the same 6-step workflow on all three, with the plan limits that stop agency work: active scenarios, polling intervals, execution time caps and seats.">
+<link rel="canonical" href="https://whdgus1021-png.github.io/opsstack-guide/make-vs-zapier-vs-n8n.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Make vs Zapier vs n8n for a small agency (2026)">
+<meta property="og:description" content="The same 6-step workflow costs $5.40 per 1,000 runs on Make and $133 on Zapier's entry paid tier. Here is the arithmetic, and where it stops being the whole story.">
+<meta property="og:url" content="https://whdgus1021-png.github.io/opsstack-guide/make-vs-zapier-vs-n8n.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2314181d'/><text x='50' y='70' font-size='58' font-family='Georgia,serif' fill='%23fbf9f4' text-anchor='middle'>O</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://whdgus1021-png.github.io/opsstack-guide/make-vs-zapier-vs-n8n.html#article",
+      "headline": "Make vs Zapier vs n8n for a small agency",
+      "description": "Credit, task and execution pricing compared on the same six-step workflow, with the plan limits that decide the choice for agencies of three to fifty people.",
+      "datePublished": "2026-11-22",
+      "dateModified": "2026-11-22",
+      "author": { "@type": "Organization", "name": "OpsStack Guide" },
+      "publisher": { "@type": "Organization", "name": "OpsStack Guide" },
+      "mainEntityOfPage": "https://whdgus1021-png.github.io/opsstack-guide/make-vs-zapier-vs-n8n.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Make cheaper than Zapier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per unit of work, yes, by roughly 27x at comparable tiers. Make's Core plan is $9/month (annual billing) for 10,000 credits at $0.90 per 1,000 credits; Zapier's Professional plan costs $49/month (yearly billing) for 2,000 tasks, $24.50 per 1,000 tasks. Make counts every module including the trigger while Zapier counts action steps, but no reasonable reading closes a gap that size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a paid Zapier plan for multi-step Zaps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Free is 100 tasks/month and two-step Zaps only. Multi-step, webhooks, filters, paths and premium apps all begin on Professional, where the floor is $19.99/month for 100 tasks and 2,000 tasks costs $49/month with yearly billing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can n8n run on a cheap VPS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Community Edition is the same workflow engine self-hosted, and its requirements are modest. A 2 GB / 1 vCPU instance at $12/month on DigitalOcean, or a Hetzner shared-vCPU server from €5.49/month excl. VAT, is enough for a five-person team running dozens of workflows, as long as everything runs in the default mode. Queue mode for heavy concurrency is a paid Business feature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a small agency run several clients' automations in one account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Make allows unlimited users on every plan including Free, so a whole team can share one paid workspace, but there is no per-client billing split. n8n gives every plan unlimited users and separates work into projects: 1 on Starter, 3 on Pro. Zapier's cheaper plans are effectively single-user and Team at $69/month includes 25 users with shared folders."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">OpsStack<span>Guide</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#method">How we check</a>
+      <a href="about.html">About</a>
+      <a href="affiliate-disclosure.html">Disclosure</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Comparison · Automation</p>
+      <h1>Make vs Zapier vs n8n for a small agency</h1>
+      <p class="dek">All three run the same automation. Only one of them charges you per step, and that difference is worth more than every feature on the comparison grid.</p>
+      <div class="article-meta">
+        <span class="pill check">Prices checked 22 Nov 2026</span>
+        <span>12 min read</span>
+        <span>Make · Zapier · n8n</span>
+      </div>
+      <p class="disclosure">This article contains affiliate links. We may earn a commission if you subscribe through them, at no extra cost to you. It does not affect the order or the verdict — <a href="affiliate-disclosure.html">how we handle this</a>.</p>
+    </div>
+  </div>
+
+  <div class="wrap layout">
+    <article>
+
+      <div class="verdict">
+        <h2>The verdict in 60 seconds</h2>
+        <p><strong>Choose Make</strong> if you want a visual builder, multi-step workflows and unlimited teammates on the cheapest real plan. At $9/month (annual) for 10,000 credits it is the best value in this table by a wide margin, and the free tier is generous enough to evaluate properly.</p>
+        <p><strong>Choose Zapier</strong> if the work depends on a long tail of app connectors, or if a non-technical account manager has to maintain the Zaps. You are paying around 27x more per unit of work for that, so budget for it: 2,000 tasks a month is $49, and multi-step workflows need that paid plan.</p>
+        <p><strong>Choose n8n</strong> if you can run a server and want the price to stop scaling with volume. Executions are counted per run, not per step, so an 8-step workflow costs the same as a 2-step one. Self-hosted Community Edition is free; Cloud is €20–50/month.</p>
+      </div>
+
+      <h2 id="models">Three tools, three billing units — and why it matters</h2>
+      <p>The pricing pages look similar and are not. Make sells <strong>credits</strong>, and every module that runs inside a scenario burns at least one. Zapier sells <strong>tasks</strong>, and each successful action step burns one (the trigger itself does not). n8n sells <strong>executions</strong>, and one execution is one complete run of a workflow no matter how many nodes are inside it.</p>
+      <p>That last one is the structural difference. Suppose your client-onboarding workflow has six steps: a form submission, a CRM record, a project in your PM tool, a Slack message, a Drive folder, and an invoice draft.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Units consumed by one run of the same 6-step workflow</caption>
+          <thead>
+            <tr><th>Tool</th><th class="num">Units per run</th><th>What gets counted</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Make</td><td class="num">6 credits</td><td>Every module that executes, trigger included</td></tr>
+            <tr><td>Zapier</td><td class="num">5–6 tasks</td><td>Each successful action; the trigger is free</td></tr>
+            <tr><td>n8n</td><td class="num">1 execution</td><td>The whole run, regardless of node count</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Counting rules are the vendors' own. Filters and paths that stop a run early consume fewer units on Make and Zapier; n8n still charges the execution once it starts.</p>
+      <p>This is why "Zapier is the expensive one" is not a meme, and also why it is not the whole story: a two-step Zap and an eight-step Zap cost Zapier wildly different amounts, while n8n does not care. The more of your process you automate in one flow, the better n8n's model reads — and the worse Zapier's does.</p>
+
+      <h2 id="prices">What each plan actually includes (November 2026)</h2>
+      <h3>Make</h3>
+      <p>Make switched its billing unit from "operations" to "credits" on 27 August 2026; the numbers below are the ones its pricing slider shows at the 10,000-credit level, with annual billing selected.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Make plans at 10,000 credits/month, annual billing</caption>
+          <thead>
+            <tr><th>Plan</th><th class="num">Price</th><th class="num">Per 1,000 credits</th><th>What you get</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Free</strong></td><td class="num">$0</td><td class="num">—</td><td>1,000 credits/mo, <strong>2 active scenarios</strong>, 15-minute minimum interval, 5-minute max run, 5 MB files, 512 MB transfer, 7-day logs</td></tr>
+            <tr><td><strong>Core</strong></td><td class="num">$9</td><td class="num">$0.90</td><td>Unlimited active scenarios, scheduling down to 1 minute, 40-minute max run, 100 MB files, API access (60 calls/min), 30-day logs, <strong>unlimited users</strong></td></tr>
+            <tr><td><strong>Pro</strong></td><td class="num">$16</td><td class="num">$1.60</td><td>Everything in Core plus priority execution, custom variables, full-text log search, 250 MB files, 120 calls/min</td></tr>
+            <tr><td><strong>Teams</strong></td><td class="num">$29</td><td class="num">$2.90</td><td>Everything in Pro plus team roles, shared scenario templates, 500 MB files, 3 event subscriptions, 240 calls/min</td></tr>
+            <tr><td><strong>Enterprise</strong></td><td class="num">Custom</td><td class="num">—</td><td>SSO, audit logs, on-prem agent, overage protection, 1 GB files</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Source: make.com/pricing, annual billing, 10,000-credit slider position, read 22 November 2026. Monthly billing is about 15% higher. Credits expire at the end of the term.</p>
+      <p>Read that price-per-credit column again, because it runs the wrong way: <strong>the more expensive plans cost more per credit</strong>. Core is $0.90 per 1,000; Pro is $1.60; Teams is $2.90. At the same 10,000 credits you are paying 78% more for Pro, and what you get is not volume — it is one-minute scheduling on a plan that already has it, priority execution, better logs, and larger files. If your only problem is "we run out of credits", the fix is not to upgrade to Pro; it is to buy more credits on Core.</p>
+
+      <h3>Zapier</h3>
+      <div class="table-scroll">
+        <table>
+          <caption>Zapier plans, annual billing</caption>
+          <thead>
+            <tr><th>Plan</th><th class="num">From</th><th>What you get</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Free</strong></td><td class="num">$0</td><td>100 tasks/mo, unlimited Zaps, Tables and Forms, <strong>two-step Zaps only</strong>, basic AI access</td></tr>
+            <tr><td><strong>Professional</strong></td><td class="num">$19.99–49</td><td>Multi-step Zaps, every premium app, webhooks, filters and paths, AI fields, email support. $19.99 is the floor at 100 tasks/month; <strong>2,000 tasks/month is $49</strong></td></tr>
+            <tr><td><strong>Team</strong></td><td class="num">$69</td><td>2,000 tasks plus everything in Pro, <strong>25 users</strong>, shared Zaps and folders, shared connections, SAML SSO, priority support</td></tr>
+            <tr><td><strong>Enterprise</strong></td><td class="num">Custom</td><td>Unlimited users, advanced admin controls, SCIM, custom retention, annual task limits</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Source: zapier.com/pricing with yearly billing selected, task slider read at 100 / 1,500 / 2,000 tasks, 22 November 2026. The slider continues to 5K, 10K, 100K, 1M and 2M tasks, and the per-task rate falls as the tier rises. If a plan runs out of tasks, Zapier switches the account to pay-as-you-go unless you turn that off.</p>
+      <p>Two limits decide most agency decisions here. First, <strong>two-step Zaps on Free</strong> means the free tier cannot do onboarding, reporting or invoicing workflows at all — those need at least four steps. Second, users: Professional is effectively one seat, and collaboration starts at $69/month for Team. A three-person ops team that wants to see each other's Zaps is looking at $69 before it has automated anything.</p>
+
+      <h3>n8n</h3>
+      <div class="table-scroll">
+        <table>
+          <caption>n8n plans, annual billing (EUR)</caption>
+          <thead>
+            <tr><th>Plan</th><th class="num">Price</th><th>The limits that shape the work</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Community</strong> (self-hosted)</td><td class="num">$0 licence</td><td>Full workflow engine, custom nodes, bash, Git-friendly JSON. You own hosting, updates, backups and TLS. Internal business use only under the Sustainable Use licence</td></tr>
+            <tr><td><strong>Starter</strong></td><td class="num">€20</td><td>1 shared project, 5 concurrent executions, 2.5k saved executions, 7-day log retention, <strong>5-minute max execution time</strong>, 1 assistant credit pool of 1,600/mo</td></tr>
+            <tr><td><strong>Pro</strong></td><td class="num">€50</td><td>3 shared projects, 20–50 concurrent executions, 25k saved executions, 30-day retention, <strong>40-minute max execution</strong>, admin roles, workflow history, insights</td></tr>
+            <tr><td><strong>Business</strong></td><td class="num">€667</td><td>6 projects, SSO/LDAP, Git-based version control, multiple environments, queue mode scaling, 30-day insights</td></tr>
+            <tr><td><strong>Enterprise</strong></td><td class="num">Custom</td><td>Unlimited projects, 200+ concurrent executions, external secret store, log streaming, 365-day insights, SLA</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Source: n8n.io/pricing, read 22 November 2026. All plans include unlimited users and workflows.</p>
+      <p>The 5-minute execution ceiling on Starter is the single most under-read number on n8n's page. It is fine for webhooks and CRM syncs. It is not fine for a workflow that pages through a few thousand rows of a client's export, or one that waits for a human to approve a proposal before continuing — those hit the wall mid-run and fail, and the failure looks like a bug in your workflow rather than a plan limit.</p>
+
+      <h2 id="unit">The same workflow, priced three ways</h2>
+      <p>Normalise to <strong>cost per 1,000 workflow runs</strong> of the six-step onboarding flow above, holding the assumptions still: 6 credits per run on Make, 5 tasks per run on Zapier (trigger free, one step short-circuited by a filter), 1 execution per run on n8n.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Marginal cost of 1,000 runs of a 6-step workflow</caption>
+          <thead>
+            <tr><th>Route</th><th class="num">Units needed</th><th class="num">Cost per 1,000 runs</th><th>How the number was reached</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Make Core</td><td class="num">6,000 credits</td><td class="num">$5.40</td><td>6 × $0.90 per 1,000 credits</td></tr>
+            <tr><td>Make Free</td><td class="num">6,000 credits</td><td class="num">$0 — for 166 runs</td><td>1,000 credits ÷ 6; then the 2-scenario cap stops you</td></tr>
+            <tr><td>Zapier Professional</td><td class="num">5,000 tasks</td><td class="num">≈ $109–123</td><td>Extrapolated from the measured rate: $49 for 2,000 tasks ($24.50 per 1,000), $39 for 1,500 ($26 per 1,000)</td></tr>
+            <tr><td>Zapier Free</td><td class="num">—</td><td class="num">Not possible</td><td>Two-step limit; a six-step workflow cannot exist on Free</td></tr>
+            <tr><td>n8n Cloud Starter</td><td class="num">1,000 executions</td><td class="num">€0 marginal</td><td>Within the plan allowance; the constraint is concurrency (5) and the 5-minute cap</td></tr>
+            <tr><td>n8n self-hosted</td><td class="num">1,000 executions</td><td class="num">€0 marginal</td><td>Fixed server cost of €5.49–$12/month, then unlimited runs</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Assumptions are ours, and they favour nobody: they are the vendors' published counting rules applied to one workflow shape. A two-step Zap would make Zapier look far better; an eight-step workflow would make it look worse. Zapier's higher task tiers reduce the per-task rate, which is why its figure is a range rather than a quote. Make's credit price and Zapier's 1,500- and 2,000-task prices are read directly off their pricing pages.</p>
+      <p>Thirty-fold gaps are unusual in software pricing, and they exist for a reason that has nothing to do with generosity: Zapier sells the connectors and the confidence that a non-technical person can maintain them, and it prices per action because actions are what its customers understand. Make sells volume. n8n sells the absence of a meter.</p>
+
+      <h2 id="agency">What actually breaks in an agency, not in a demo</h2>
+      <p>Agencies break automation in four specific places, and the plan grid rarely shows any of them.</p>
+      <h3>1. The 15-minute polling floor</h3>
+      <p>Make's free plan runs scheduled scenarios no more often than every 15 minutes; Core drops that to one minute. If a client's contact form feeds a Slack alert that someone is supposed to answer within five minutes, the free plan is not a smaller version of the paid one — it is a different service level. Zapier's free tier polls on a similar cadence. n8n self-hosted has no floor other than your own server and the schedule you set.</p>
+      <h3>2. The number of active workflows</h3>
+      <p>Two active scenarios on Make Free is the limit that surprises most people, because 1,000 credits sounds like plenty while two workflows is one client's onboarding plus one internal sync. Every agency bundle — eight clients, four workflows each — starts at 32 active scenarios.</p>
+      <h3>3. Seats, and who is allowed to touch it</h3>
+      <p>This is where Make's pricing is quietly generous: <strong>unlimited users on every plan, Free included</strong>. Your account manager can look at a broken scenario without a seat purchase. n8n also gives unlimited users on all plans, split into projects (1 on Starter, 3 on Pro). Zapier's collaboration story starts at Team, $69/month for 25 users.</p>
+      <h3>4. The one long-running job</h3>
+      <p>Any workflow that waits — for approval, for a document, for a nightly batch — runs into execution-time caps: 5 minutes on Make Free and n8n Starter, 40 minutes on Make Core and above and n8n Pro. Before you choose, find your slowest real workflow and check it against that number; it is the most common reason a pilot that worked becomes "unreliable" in production.</p>
+
+      <div class="callout warn">
+        <span class="label">The mistake we see most</span>
+        <p>Buying Zapier Professional because "we already know Zapier", then rebuilding the same workflow in Make eighteen months later when the task bill passes $150/month. If your automation runs on a schedule and touches systems your own team controls, Zapier's connector depth is not earning that premium. If it runs on ad-hoc triggers from a dozen niche SaaS tools, it is.</p>
+      </div>
+
+      <h2 id="pick">Which one, for which agency</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>Fit by situation, November 2026 prices</caption>
+          <thead>
+            <tr><th>Your situation</th><th>Pick</th><th>First-year cost</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1–5 people, 10–30 workflows, mostly Google Workspace + a CRM + Slack</td><td>Make Core</td><td>$108</td><td>Cheapest unit price, unlimited teammates, one-minute scheduling</td></tr>
+            <tr><td>Same, but nobody technical will maintain it</td><td>Zapier Professional</td><td>$588</td><td>Fewer failure modes to explain, better connector coverage, AI fields</td></tr>
+            <tr><td>You already run a server and want the bill to stop moving</td><td>n8n Community</td><td>$66–144 hosting</td><td>Per-execution counting, custom nodes, no metered surprises</td></tr>
+            <tr><td>Compliance question from a client, no ops engineer</td><td>n8n Cloud Pro</td><td>€600</td><td>40-minute runs, 30-day logs, 3 projects, hosted by the vendor</td></tr>
+            <tr><td>You only need one Zaps-style bridge between two apps</td><td>Zapier Free</td><td>$0</td><td>Two steps is enough; do not buy a plan to save $0</td></tr>
+            <tr><td>You need 25 people clicking around a shared workflow library</td><td>Zapier Team</td><td>$828</td><td>The only route here with per-folder sharing plus SSO below enterprise</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Who should not buy Make</h3>
+      <p>If the person maintaining the automations is a designer or an account manager with no patience for a canvas, Make's model — bundles, iterators, and module-by-module data mapping — will generate support tickets. Zapier's linear step list is objectively easier to hand over. Also skip Make if you need a specific niche connector: its library is large (3,500+ apps) but not Zapier's 9,000+.</p>
+
+      <h3>Who should not buy Zapier</h3>
+      <p>Anyone whose workflows are scheduled and whose volume grows with the number of clients. A per-step meter on a client-count business means your software bill rises every time you win work, and the price never comes back down when a client leaves. Also: don't buy Professional expecting team access; that is Team, at three times the price.</p>
+
+      <h3>Who should not buy n8n</h3>
+      <p>Teams without anyone who can keep a Linux box patched, or who would treat "the server is down" as an emergency with no owner. Self-hosting is genuinely cheap and genuinely a maintenance obligation: updates, database backups, TLS certificates, and a monitoring check you trust. If nobody owns that, Cloud Starter's €20 is the honest price of not owning it — and if your slowest workflow exceeds five minutes, Cloud Pro's €50 is the real comparison, not Starter.</p>
+
+      <h2 id="do">What we would do with a $50/month budget</h2>
+      <p>Make Core at $9 as the workhorse, and put the remaining $41 toward the tools the automations connect to rather than a second automation engine. Add n8n Community on a $12 droplet only when a specific workflow needs custom code, long-running waits, or data that cannot leave your own infrastructure — and keep the two systems apart by giving each a clear job, so nobody has to remember which tool owns which workflow.</p>
+      <p>Then revisit in a quarter. Make repackaged its billing unit in August 2026, Zapier keeps moving features between tiers, and n8n has been raising Cloud prices as it adds AI features. Any of those can change the arithmetic faster than your usage changes.</p>
+
+      <div class="cta-row">
+        <a class="cta" href="https://www.make.com/en/register" rel="sponsored nofollow noopener" data-aff="make">Try Make free <span class="tag">· 1,000 credits/mo</span></a>
+        <a class="cta" href="https://zapier.com/sign-up" rel="sponsored nofollow noopener" data-aff="zapier">Try Zapier free <span class="tag">· 100 tasks/mo</span></a>
+        <a class="cta" href="https://n8n.io/" rel="sponsored nofollow noopener" data-aff="n8n">Get n8n <span class="tag">· Community or Cloud</span></a>
+      </div>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Is Make cheaper than Zapier?</h3>
+      <p>Per unit of work, yes, by roughly 27x at comparable tiers: $0.90 per 1,000 credits on Make Core against $24.50 per 1,000 tasks on Zapier Professional at its 2,000-task tier ($49/month, yearly billing). The units are not identical — Make counts the trigger module, Zapier does not — but no reasonable reading closes a gap that size.</p>
+      <h3>Do I need a paid Zapier plan for multi-step Zaps?</h3>
+      <p>Yes. Free is 100 tasks/month and two-step Zaps only. Multi-step, webhooks, filters, paths and premium apps all begin on Professional.</p>
+      <h3>Can n8n run on a cheap VPS?</h3>
+      <p>Yes. A $12/month 2 GB instance, or a Hetzner shared-vCPU server from €5.49/month, handles dozens of workflows for a small team in default mode. Heavy concurrency (queue mode) is a Business-plan feature, so plan the ceiling before you promise a client 24/7 volume.</p>
+      <h3>Can one account hold several clients' automations?</h3>
+      <p>Technically all three can. Make has unlimited users but no per-client separation beyond folders and teams; n8n's projects (1 on Starter, 3 on Pro) map cleanly to clients; Zapier's folders do the same above Team. If you need per-client logins and invoicing, you are really asking for separate workspaces, which is a different and more expensive question.</p>
+
+      <p class="tnote" style="margin-top:2.5em">Prices and plan limits read from make.com/pricing, zapier.com/pricing and n8n.io/pricing on 22 November 2026. Vendors change tiers without notice; if a number here no longer matches, <a href="https://github.com/whdgus1021-png/opsstack-guide/issues">tell us</a> and we will date the correction.</p>
+
+    </article>
+
+    <aside class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#models">Three billing units</a></li>
+        <li><a href="#prices">What each plan includes</a></li>
+        <li><a href="#unit">Cost of 1,000 runs</a></li>
+        <li><a href="#agency">What breaks in an agency</a></li>
+        <li><a href="#pick">Which one for you</a></li>
+        <li><a href="#do">A $50/month stack</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="./">OpsStack<span>Guide</span></a>
+        <p style="max-width:340px;margin-top:12px">Independent comparisons of the automation and CRM tools small agencies run. Prices verified against vendor pages, dated in every article.</p>
+      </div>
+      <div>
+        <h2>Reviews</h2>
+        <ul>
+          <li><a href="make-vs-zapier-vs-n8n.html">Make vs Zapier vs n8n</a></li>
+          <li><a href="zapier-alternatives-task-limits.html">Zapier alternatives</a></li>
+          <li><a href="n8n-self-host-vs-cloud.html">n8n self-host vs cloud</a></li>
+          <li><a href="hubspot-starter-vs-free-crm.html">HubSpot Starter vs free</a></li>
+          <li><a href="client-reporting-automation.html">Client reporting guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="about.html">About &amp; editorial policy</a></li>
+          <li><a href="affiliate-disclosure.html">Affiliate disclosure</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://github.com/whdgus1021-png/opsstack-guide/issues">Report a price change</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© 2026 OpsStack Guide. No cookies, no analytics, no tracking scripts. Prices in USD unless noted, checked 22 November 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

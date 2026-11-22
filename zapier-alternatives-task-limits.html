@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zapier alternatives when you keep hitting task limits (2026)</title>
+<meta name="description" content="Your Zaps ran out of tasks mid-month. Four routes that cost less than growing the Zapier plan, what each one really charges for a 2,000-task month, and the workflows that will not migrate.">
+<link rel="canonical" href="https://whdgus1021-png.github.io/opsstack-guide/zapier-alternatives-task-limits.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zapier alternatives when you keep hitting task limits">
+<meta property="og:description" content="A 2,000-task month costs $49 on Zapier. The same work is $9 on Make, €20 on n8n Cloud, or free on a $12 server.">
+<meta property="og:url" content="https://whdgus1021-png.github.io/opsstack-guide/zapier-alternatives-task-limits.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2314181d'/><text x='50' y='70' font-size='58' font-family='Georgia,serif' fill='%23fbf9f4' text-anchor='middle'>O</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://whdgus1021-png.github.io/opsstack-guide/zapier-alternatives-task-limits.html#article",
+      "headline": "Zapier alternatives when you keep hitting task limits",
+      "description": "Make, n8n, systeme.io and a cheaper-Zapier route compared on a 2,000-task month, plus the four fixes that avoid switching at all.",
+      "datePublished": "2026-11-22",
+      "dateModified": "2026-11-22",
+      "author": { "@type": "Organization", "name": "OpsStack Guide" },
+      "publisher": { "@type": "Organization", "name": "OpsStack Guide" },
+      "mainEntityOfPage": "https://whdgus1021-png.github.io/opsstack-guide/zapier-alternatives-task-limits.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What happens when a Zapier plan runs out of tasks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zapier's pricing page states that reaching a task limit switches the account to pay-as-you-go unless you turn that off or move to a higher tier. So the Zaps may not stop; the bill changes shape instead. Check billing settings before concluding that a workflow was paused by the task limit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Zapier alternative is cheapest for a small agency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Make Core at $9/month (annual billing) for 10,000 credits covers about 1,600 runs of a six-step workflow. n8n Cloud Starter at €20/month and n8n self-hosted on a $12 server are the next cheapest, and both count a whole run as one execution rather than counting steps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Zapier Tables and Interfaces be moved to Make or n8n?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not directly. Tables, Interfaces, Forms, Agents and MCP are Zapier platform features with no import path; the data can be exported as CSV but the forms and pages have to be rebuilt. Workflow logic itself ports, usually as a rebuild rather than a conversion."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">OpsStack<span>Guide</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#method">How we check</a>
+      <a href="about.html">About</a>
+      <a href="affiliate-disclosure.html">Disclosure</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Alternatives · Automation</p>
+      <h1>Zapier alternatives when you keep hitting task limits</h1>
+      <p class="dek">Before you buy a bigger task tier, know what the tier costs, what actually happens at the limit, and which workflows will refuse to move.</p>
+      <div class="article-meta">
+        <span class="pill check">Prices checked 22 Nov 2026</span>
+        <span>9 min read</span>
+        <span>Zapier · Make · n8n · systeme.io</span>
+      </div>
+      <p class="disclosure">Contains affiliate links. A subscription through one may earn us a commission at no extra cost to you; it does not change the recommendations or their order. <a href="affiliate-disclosure.html">Full disclosure</a>.</p>
+    </div>
+  </div>
+
+  <div class="wrap layout">
+    <article>
+
+      <div class="verdict">
+        <h3 style="margin-top:0">Short answer</h3>
+        <p>If the automations are scheduled, internal, and touch apps your team controls, <strong>move to Make Core ($9/month, 10,000 credits)</strong> and keep Zapier free for the one or two connectors nothing else has. If volume is the whole problem and it keeps growing, <strong>n8n</strong> is the only option here where an eight-step workflow costs the same as a two-step one. If the automations are really marketing — form → email → course → upsell — <strong>systeme.io's free plan</strong> replaces three tools, not one.</p>
+        <p>If what you have is a dozen niche connectors and nobody technical to maintain them, stay on Zapier and pay for the tier. That is a legitimate answer, and it is cheaper than a migration that fails in month three.</p>
+      </div>
+
+      <h2 id="first">First: is it really the task limit?</h2>
+      <p>Zapier's own pricing page says that hitting your task allowance switches the account to <strong>pay-as-you-go</strong> unless you turn that behaviour off or move up a tier. So "our Zaps stopped" is often two different incidents: a genuine stop (because overage was disabled) or a bill that quietly grew. Open the billing page and look at what happened before you plan a migration around the wrong problem.</p>
+      <p>Then audit where the tasks actually go. Pull the task usage report for the last full month and sort by Zap. In most agencies we have looked at, three patterns account for the majority:</p>
+      <ul>
+        <li><strong>Polling loops that fire on "every new row"</strong> in a sheet a human also edits, so every edit re-runs the workflow.</li>
+        <li><strong>A digest that sends one message per row</strong> instead of one message per day.</li>
+        <li><strong>A five-step Zap where steps 3 and 4 are "look up" actions</strong> that could be a filter on the trigger, or one Formatter step.</li>
+      </ul>
+      <p>Each of those is a 2–10x reduction in tasks for an afternoon's work, with no new tool and no new invoice. Do that before you compare platforms; otherwise you migrate the waste along with the workflows.</p>
+
+      <h2 id="options">Four routes, priced on the same month</h2>
+      <p>The unit of comparison is a <strong>2,000-task month with yearly billing</strong>, because that is a tier Zapier will actually show you a price for. A six-step workflow at 400 runs a month lands there with room to spare.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>What a 2,000-task month costs on each route (yearly billing)</caption>
+          <thead>
+            <tr><th>Route</th><th class="num">Monthly cost</th><th>What you are buying at that price</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Zapier Professional</strong>, 2,000 tasks</td><td class="num">$49</td><td>Multi-step Zaps, 9,000+ connectors, filters and paths, AI fields, one effective seat</td></tr>
+            <tr><td><strong>Zapier Team</strong>, 2,000 tasks</td><td class="num">$69</td><td>The same plus 25 users, shared folders and connections, SAML SSO</td></tr>
+            <tr><td><strong>Make Core</strong>, 10,000 credits</td><td class="num">$9</td><td>About 1,600 runs of a six-module workflow, unlimited users, one-minute scheduling, 40-minute runs, 30-day logs</td></tr>
+            <tr><td><strong>n8n Cloud Starter</strong></td><td class="num">€20</td><td>1,600+ executions regardless of node count, 5 concurrent executions, 5-minute run cap, 7-day logs</td></tr>
+            <tr><td><strong>n8n Community</strong>, self-hosted</td><td class="num">$0 + server</td><td>Unlimited executions on a $12/month 2 GB instance (or a Hetzner shared-vCPU server from €5.49)</td></tr>
+            <tr><td><strong>systeme.io Free</strong></td><td class="num">$0</td><td>2,000 contacts, unlimited emails, 3 funnels, 1 course — but <strong>one automation rule</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tnote">Zapier: zapier.com/pricing, task slider at 2,000 with yearly billing, 22 November 2026. Make: make.com/pricing, annual billing, 10,000-credit level. n8n: n8n.io/pricing, annual billing. systeme.io: systeme.io/pricing. DigitalOcean droplet pricing checked the same day.</p>
+      <p>The gap is not subtle. For the price of Zapier's 2,000-task tier you get more than five times the plan on Make, and Make's plan does not care how many people log in. What you lose is connector coverage and the guided setup that makes Zapier usable by someone who has never built a workflow.</p>
+
+      <h3>And if volume keeps growing?</h3>
+      <p>Zapier's per-task rate falls as tiers rise — at 1,500 tasks the rate is $26 per 1,000, at 2,000 it is $24.50 — so a larger plan is a better deal per task but a worse deal in total. Make's credit price does not fall with volume on the same plan: Core is $0.90 per 1,000 credits at 10,000 and you buy additional credits at that rate. n8n's execution model does not scale with workflow length at all, which is why a team running long workflows eventually stops comparing prices and starts comparing hosting.</p>
+      <div class="callout">
+        <span class="label">Rules of thumb that hold up</span>
+        <p>Under 1,000 tasks a month with lightweight Zaps: Zapier Free or Professional is fine, and switching is not worth the afternoon. Between 2,000 and 20,000 tasks a month: Make pays for itself in the first month. Above that, or with any workflow over five minutes: n8n, self-hosted if someone owns the server, Cloud Pro (€50) if not.</p>
+      </div>
+
+      <h2 id="make">Make: the default switch</h2>
+      <p>Make is what most agencies mean when they say "we moved off Zapier". The visual canvas takes an afternoon to learn, and after that the economics are hard to argue with: 10,000 credits for $9, unlimited users on every plan, and scheduling down to one minute on Core.</p>
+      <p>Three things to know before you migrate:</p>
+      <ul>
+        <li><strong>Credits are counted per module, trigger included.</strong> A Zap that consumed 5 tasks becomes a scenario consuming 6 credits, because Make charges for the trigger that Zapier gives away. Budget accordingly when you estimate.</li>
+        <li><strong>Free is a trial with a hard ceiling.</strong> 1,000 credits is plenty to evaluate, but <em>two active scenarios</em> and a 15-minute minimum interval mean a real client workflow will not fit.</li>
+        <li><strong>Upgrading a plan is not how you get more volume.</strong> Core is $0.90 per 1,000 credits; Pro is $1.60; Teams is $2.90 at the same 10,000 credits. Higher plans buy priority execution, better logs and larger files — not cheaper capacity.</li>
+      </ul>
+
+      <h2 id="n8n">n8n: the option that stops metering your work</h2>
+      <p>n8n charges per <strong>execution</strong> — one complete run — so workflow length is free. If your Zapier bill is driven by long, step-heavy workflows rather than by sheer volume, that single design choice can remove most of the cost.</p>
+      <p>Cloud Starter is €20/month (yearly), which is cheaper than Zapier's 2,000-task tier, and it includes unlimited users. Two limits matter: <strong>5 concurrent executions</strong> and a <strong>5-minute cap per run</strong>. The cap is the one that surprises people — a workflow that pages through a client's spreadsheet export can exceed five minutes and fail, and the error looks like a bug. Pro at €50 raises the cap to 40 minutes and concurrency to 20–50.</p>
+      <p>Self-hosting drops the subscription entirely: a 2 GB droplet is $12/month, or less on Hetzner. What you are actually buying with the €20 is the removal of an on-call obligation. Count two to four hours a month for updates, backups and certificate renewal, price those hours at whatever you bill, and the decision usually makes itself. Our longer breakdown is in <a href="n8n-self-host-vs-cloud.html">n8n self-hosted vs Cloud for a five-person team</a>.</p>
+
+      <h2 id="systeme">systeme.io: only if the automations are marketing</h2>
+      <p>systeme.io is not a Zapier replacement — it has no 9,000-app connector library. It replaces the marketing half of your stack: landing pages, email campaigns, funnels, courses, booking and an affiliate program, with an automation builder on top.</p>
+      <p>The free plan is unusually complete (2,000 contacts, unlimited email sends, 3 funnels, 1 course, 1 custom domain) and it never expires, but it includes <strong>one automation rule</strong> — one. Startup at $17/month is the first plan an agency can run on, and it comes with something no other tool in this article offers: <strong>unlimited sub-accounts, each carrying the parent plan's limits at no extra cost</strong>. For an agency that builds funnels for clients, that is the feature, not the price.</p>
+      <p>If your "Zaps" are really "when someone fills in the form, tag them and start the email sequence", this replaces Zapier, Mailchimp and ClickFunnels for $17 a month. If they are "when a Stripe payment succeeds, create a Linear issue and post to Slack", systeme.io is not the answer.</p>
+
+      <h2 id="migrate">What will not migrate</h2>
+      <p>Workflow logic is portable in the sense that it can be rebuilt. These are not portable at all:</p>
+      <ul>
+        <li><strong>Zapier Tables, Interfaces, Forms, Canvas, Agents and MCP.</strong> No import path. Data exports as CSV; forms and pages get rebuilt.</li>
+        <li><strong>App connections.</strong> Every account re-authorises on the new platform, and any connection made by a departing employee has to be re-established rather than transferred.</li>
+        <li><strong>Zap version history and error logs.</strong> Useful when something breaks six months later — export them before you cancel.</li>
+      </ul>
+      <p>Budget a realistic rebuild: one hour per simple workflow, half a day for anything with a loop, a wait, or a branch into two systems. Eight workflows is a working week including testing; if you have forty, migrate the top ten by task usage and leave the rest where they are.</p>
+
+      <div class="callout good">
+        <span class="label">Do this in the right order</span>
+        <p>1. Audit task usage by Zap. 2. Cut the waste (filters, digests, fewer steps). 3. Re-price what is left on Zapier at the new volume. 4. Only then decide whether the remaining gap justifies a rebuild — and run both platforms in parallel for two weeks before cancelling anything.</p>
+      </div>
+
+      <h2 id="stay">When staying is the right call</h2>
+      <p>Stay on Zapier if your automations depend on tools with thin integration coverage — niche CRMs, industry-specific apps, older SaaS — or if the person who maintains them is not the person who enjoys building systems. Zapier's value is that a failure is legible to a non-technical owner: a step, an error, a log line, a fix. Make's canvas is more powerful and less forgiving; n8n is more powerful still and assumes you can read a stack trace.</p>
+      <p>Also stay if the monthly bill is under about $50 and the time to migrate is billable. A $250 one-off rebuild against a $30/month saving takes eight months to pay back, and that is before anything breaks.</p>
+
+      <div class="cta-row">
+        <a class="cta" href="https://www.make.com/en/register" rel="sponsored nofollow noopener" data-aff="make">Try Make free <span class="tag">· 1,000 credits</span></a>
+        <a class="cta" href="https://n8n.io/" rel="sponsored nofollow noopener" data-aff="n8n">Get n8n <span class="tag">· Community or Cloud</span></a>
+        <a class="cta" href="https://systeme.io/" rel="sponsored nofollow noopener" data-aff="systeme">Try systeme.io free <span class="tag">· 2,000 contacts</span></a>
+      </div>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>What happens when a Zapier plan runs out of tasks?</h3>
+      <p>Zapier's pricing page states that reaching the limit switches the account to pay-as-you-go unless you turn that off or move to a higher tier. So check the billing settings before concluding that a workflow was paused.</p>
+      <h3>Which alternative is cheapest for a small agency?</h3>
+      <p>Make Core: $9/month (yearly) for 10,000 credits, which covers roughly 1,600 runs of a six-module workflow. n8n Cloud Starter at €20 and self-hosted n8n on a $12 server are next, and both count a whole run as one unit instead of counting steps.</p>
+      <h3>Can Zapier Tables and Interfaces be moved to Make or n8n?</h3>
+      <p>Not directly. Export the data as CSV and rebuild the pages. Workflow logic ports as a rebuild, not a conversion.</p>
+      <h3>Is migration worth it at 500 tasks a month?</h3>
+      <p>Usually not. At that volume the saving is a few dollars a month, and the rebuild costs a day you could bill to a client. Cut the obvious waste in your existing Zaps instead.</p>
+
+      <p class="tnote" style="margin-top:2.5em">Prices read from zapier.com/pricing (task slider at 100 / 1,500 / 2,000, yearly billing), make.com/pricing (annual, 10,000 credits), n8n.io/pricing, systeme.io/pricing and digitalocean.com/pricing/droplets on 22 November 2026. Corrections: <a href="https://github.com/whdgus1021-png/opsstack-guide/issues">open an issue</a>.</p>
+
+    </article>
+
+    <aside class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#first">Is it really the limit?</a></li>
+        <li><a href="#options">Four routes priced</a></li>
+        <li><a href="#make">Make</a></li>
+        <li><a href="#n8n">n8n</a></li>
+        <li><a href="#systeme">systeme.io</a></li>
+        <li><a href="#migrate">What won't migrate</a></li>
+        <li><a href="#stay">When to stay</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="./">OpsStack<span>Guide</span></a>
+        <p style="max-width:340px;margin-top:12px">Independent comparisons of the automation and CRM tools small agencies run. Prices verified against vendor pages, dated in every article.</p>
+      </div>
+      <div>
+        <h2>Reviews</h2>
+        <ul>
+          <li><a href="make-vs-zapier-vs-n8n.html">Make vs Zapier vs n8n</a></li>
+          <li><a href="zapier-alternatives-task-limits.html">Zapier alternatives</a></li>
+          <li><a href="n8n-self-host-vs-cloud.html">n8n self-host vs cloud</a></li>
+          <li><a href="hubspot-starter-vs-free-crm.html">HubSpot Starter vs free</a></li>
+          <li><a href="client-reporting-automation.html">Client reporting guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="about.html">About &amp; editorial policy</a></li>
+          <li><a href="affiliate-disclosure.html">Affiliate disclosure</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://github.com/whdgus1021-png/opsstack-guide/issues">Report a price change</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© 2026 OpsStack Guide. No cookies, no analytics, no tracking scripts. Prices in USD unless noted, checked 22 November 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>
