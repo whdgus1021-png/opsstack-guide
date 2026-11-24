@@ -15,6 +15,10 @@ Record annual and monthly prices separately, and mark promotions.
 | 2026-11-22 | Hetzner | https://www.hetzner.com/cloud/ | Shared-vCPU cloud servers | from €5.49/month, excluding VAT |
 | 2026-11-22 | Make (affiliate) | https://help.make.com/affiliate-program | Program terms | 35% for 12 months from registration; $100 + 3 paying users to withdraw; Wise only; code is permanent |
 | 2026-11-22 | systeme.io (affiliate) | https://systeme.io/affiliate-program | Program terms (page dated April 2026) | 60% lifetime recurring, no application, `?sa=ID`, PayPal or wire, $30 minimum, paid on the 10th |
+| 2026-11-24 | monday.com | https://monday.com/pricing | Plans at the 3-seat minimum the page enforces; yearly and monthly toggles both read | Yearly: Basic $9 / Standard $12 / Pro $19 per seat per month ($27 / $36 / $57 at 3 seats); monthly: $12 / $14 / $24 ($36 / $42 / $72). Standard shows a temporary $20-a-month discount and Pro $30 at that seat count. Free = 2 seats, 3 boards |
+| 2026-11-24 | monday.com | support.monday.com — “Pricing for guests”, “Automations and integrations pricing”, plan-type article | Guest billing, guest domains, automation action allowances | Basic: no guests, no automations. Standard: 3 guests free, then 4 guests = 1 billed seat; 250 automation + 250 integration actions/month. Pro/Enterprise: unlimited guests, 25,000/250,000 actions. Guests need a different email domain from the account creator |
+| 2026-11-24 | ClickUp | https://clickup.com/pricing | Yearly and monthly toggles; struck-through “regular price” noted | Core $9/user/mo yearly, $12 monthly; Business $17 and $25; MAX $100 and $120; regular price shown as $12 / $25 / $120. Free Forever $0 (60 MB, unlimited members, 100 actions). No seat minimum. Automation actions per workspace/month: 100 / 1,000 / 10,000 / 1M |
+| 2026-11-24 | ClickUp | help.clickup.com — guest roles, pricing per user role, automations limits, intro to pricing | Guest seats per plan, paid roles, plan migration | View-only guests free and unlimited on paid plans; permission-controlled guest seats 5 (+2 per member) on Core, 10 (+5 per member) on Business; automations 500 active rules on Core, unlimited on Business; new plans migrating, price updates no earlier than January 2027 |
 
 ## Next check queue
 
@@ -22,3 +26,5 @@ Record annual and monthly prices separately, and mark promotions.
 2. Zapier: tier prices above 2,000 tasks; end date of any promotion.
 3. HubSpot: end of the $7 Starter offer (the article's table must switch to list prices when it ends).
 4. n8n: Cloud price changes (raised previously); Starter execution cap.
+5. monday.com: end of the current $20/month Standard and $30 Pro promotion at 3 seats; guest 4:1 ratio on Standard.
+6. ClickUp: end of the struck-through "regular price" discount on Core ($12) and Business ($25); completion of the new-plan migration.

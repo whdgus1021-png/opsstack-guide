@@ -12,6 +12,7 @@ zapier-alternatives-task-limits.html
 n8n-self-host-vs-cloud.html
 hubspot-starter-vs-free-crm.html
 client-reporting-automation.html
+monday-vs-clickup-client-tracking.html
 about.html                      editorial policy
 affiliate-disclosure.html       FTC 16 CFR 255 disclosure
 privacy.html
@@ -34,6 +35,8 @@ Every outbound vendor link that can become an affiliate link carries `data-aff="
 | `n8n` | n8n | `https://n8n.io/?<param>` or the partner link n8n issues |
 | `systeme` | systeme.io | `https://systeme.io/?<param>` |
 | `hubspot` | HubSpot | `https://www.hubspot.com/products/crm?<param>` |
+| `monday` | monday.com | monday.com affiliate link once a code exists; official pricing URL until then |
+| `clickup` | ClickUp | ClickUp affiliate link once a code exists; official pricing URL until then |
 
 To apply a code to the whole site, replace the `href` of every link with a given `data-aff` value:
 
