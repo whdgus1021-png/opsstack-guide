@@ -13,6 +13,7 @@ n8n-self-host-vs-cloud.html
 hubspot-starter-vs-free-crm.html
 client-reporting-automation.html
 monday-vs-clickup-client-tracking.html
+best-crm-automation-stack-under-100.html   stack pricing under $100/month
 about.html                      editorial policy
 affiliate-disclosure.html       FTC 16 CFR 255 disclosure
 privacy.html
