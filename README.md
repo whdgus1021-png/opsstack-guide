@@ -14,6 +14,7 @@ hubspot-starter-vs-free-crm.html
 client-reporting-automation.html
 monday-vs-clickup-client-tracking.html
 best-crm-automation-stack-under-100.html   stack pricing under $100/month
+make-alternatives-client-sub-accounts.html  client sub-accounts across Make, systeme.io, GoHighLevel, n8n, Zapier
 about.html                      editorial policy
 affiliate-disclosure.html       FTC 16 CFR 255 disclosure
 privacy.html

@@ -27,12 +27,20 @@ Record annual and monthly prices separately, and mark promotions.
 | 2026-11-26 | ClickUp | https://clickup.com/pricing | Yearly toggle, plan cards and feature table | Core $9 (regular $12) / Business $17 (regular $25) / MAX $100 (regular $120); Free Forever $0 with 100 automation actions; 1,000 / 10,000 / 1M actions; dashboards a trial on Core, included from Business |
 | 2026-11-26 | systeme.io | https://systeme.io/pricing | Plan FAQ prices | Free 2,000 contacts / Startup $17 (5,000) / Webinar $47 (10,000) / Unlimited $97; unlimited sub-accounts, unlimited email sends |
 | 2026-11-26 | FX | https://api.frankfurter.app/latest?from=EUR&to=USD | ECB reference rate published for 25 Nov 2026 | 1 EUR = 1.0935 USD |
+| 2026-11-28 | Make | https://www.make.com/pricing | Annual billing, 10,000-credit slider position; plan cards and full comparison table | Free $0 (1,000 credits, 2 active scenarios, 15-min interval, 5-min run cap) / Core $9 ($0.90 per 1,000) / Pro $16 ($1.60) / Teams $29 ($2.90) / Enterprise custom. "Save 15%" labels unchanged. Unlimited users on every plan. **Teams and team roles listed as not included on Free, Core and Pro, included from Teams.** Monthly toggle sits in a shadow-DOM widget that refused interaction, so monthly prices were not re-read directly; the 15% label and the 26 Nov monthly figures ($10.59 / $18.82 / $34.12) still agree. |
+| 2026-11-28 | Zapier | https://zapier.com/pricing | Full self-serve task-tier table (Pro and Team, annual and monthly) plus the machine-readable plan reference | Unchanged at the tiers the site quotes: Pro 750 $19.99 / 1,500 $39 / 2,000 $49, Team 2,000 $69 (annual). Above 2,000: Pro 5,000 $89, 10,000 $129, 20,000 $189, 50,000 $289, 100,000 $489, 200,000 $769; Team 5,000 $119, 10,000 $169, 20,000 $249, 50,000 $399, 100,000 $599. Monthly billing is 1.5x annual. No promotion end date is published anywhere on the page. Workspaces (new) are Enterprise-only; Team carries 25 seats and shared folders and connections; live chat needs a Professional tier of 2,000+ tasks. |
+| 2026-11-28 | n8n | https://n8n.io/pricing/ | Annual EUR plans and collaboration table | Starter &euro;20 / Pro &euro;50 / Business &euro;667 / Enterprise custom, unchanged. Shared projects: 1 / 3 / 6 (Business, self-hosted) / unlimited. Execution caps 5 min (Starter), 40 min (Pro and up). Team projects are not available on Community or Registered Community editions (docs.n8n.io). |
+| 2026-11-28 | systeme.io | https://systeme.io/pricing | Plan FAQ and sub-account note (page last updated April 2026) | Free 2,000 contacts / Startup $17 (5,000, 10 funnels, 5 courses) / Webinar $47 (10,000, 50 funnels, 20 courses) / Unlimited $97. Unlimited sub-accounts on every plan, each carrying the parent plan's limits at no extra cost. Free plan: 1 automation rule. |
+| 2026-11-28 | GoHighLevel | https://www.gohighlevel.com/pricing | Plan cards (yearly) and FAQ (monthly) | Agency Starter $97/mo or $970/yr with 3 sub-accounts; Agency Unlimited $297/mo or $2,970/yr with unlimited sub-accounts; Agency Pro $497/mo or $4,970/yr with SaaS mode. Unlimited contacts and users on all plans; SMS, email, calls and AI billed on usage. |
+| 2026-11-28 | FX | https://api.frankfurter.app/latest?from=EUR&to=USD | ECB reference rate published for 27 Nov 2026 | 1 EUR = 1.0957 USD |
 
 ## Next check queue
 
-1. Make: whether the "higher plan = higher price per credit" structure still holds.
-2. Zapier: tier prices above 2,000 tasks; end date of any promotion.
+1. Make: whether the "higher plan = higher price per credit" structure still holds, and whether team limits move off the Teams plan.
+2. Zapier: whether Workspaces reach the Team plan, and any promotion with an end date.
 3. HubSpot: end of the $7 Starter offer (the article's table must switch to list prices when it ends).
-4. n8n: Cloud price changes (raised previously); Starter execution cap.
+4. n8n: Cloud price changes (raised previously); whether project limits rise on Pro.
 5. monday.com: end of the current $20/month Standard and $30 Pro promotion at 3 seats; guest 4:1 ratio on Standard.
 6. ClickUp: end of the struck-through "regular price" discount on Core ($12) and Business ($25); completion of the new-plan migration.
+7. systeme.io: whether the sub-account limits stay per-sub-account as the plans change.
+8. GoHighLevel: whether the yearly-only display on the plan cards changes and whether the monthly FAQ prices move.
